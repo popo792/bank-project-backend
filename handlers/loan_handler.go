@@ -53,7 +53,8 @@ func UpdateLoanStatus(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	query := `UPDATE dbo.Loans SET loan_passed = ?, status = ? WHERE loan_id = ?`
+	query := `UPDATE dbo.Loans SET loan_passed = @p1, status = @p2 WHERE loan_id = @p3`
+
 	_, err := config.DB.Exec(query, req.LoanAmount, req.Status, req.LoanID)
 	if err != nil {
 		fmt.Println("SQL Update Error:", err.Error())

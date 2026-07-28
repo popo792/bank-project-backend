@@ -14,6 +14,7 @@ func main() {
 	http.HandleFunc("/api/transactions", handlers.GetTransactions)
 	http.HandleFunc("/api/loans", handlers.GetLoans)
 	http.HandleFunc("/api/loans/update", handlers.UpdateLoanStatus)
+	http.HandleFunc("/api/reports/download", handlers.DownloadReport)
 
 	fs := http.FileServer(http.Dir("D:/Projects/bank-project/bank-project-frontend"))
 	http.Handle("/", fs)
